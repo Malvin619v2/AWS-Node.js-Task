@@ -20,7 +20,7 @@ This is a file detailing the creation of the podpoint task and the process I wen
 1. In terminal, install tools:
 .  - Terraform
 .  - Amazon CLI
-2. Download the repository files: https://gitlab.com/Malvin619v2/podpoint-task.git
+2. Download the repository files: https://github.com/Malvin619v2/PodPoint-Task.git
 3. Unzip and extract files to a location where you want to use terraform and run
 4. On terminal, change to the location where you have unziped the files
 5. Run:
