@@ -74,13 +74,14 @@ Initially the choice to create the app was easier to do and deply using the amaz
 - provider.tf: The infomation here is how terraform will connect to aws and which information to go by such as region and cloud provider.
 - iam.tf: This file adds more infromation about the app that will be created. These are added from json tags along with calling policies already on aws provided the user has the policies attached to the user.
 # The expected output & details:
-The expected output will be terraform building the application with the right configuration. It will then output the server address which can then be pinged or put on a browser to see the app up and running. From looking at the console, it should grab the app from the ecr database, use the cluster created along with the service and tasks that was created with it. The end result would be a EC2 instance created and initialsing.
+The expected output will be terraform building the application with the right configuration. It will then output the server address which can then be pinged or put on a browser to see the app up and running. From looking at the console, it should grab the app from the ecr database, use the cluster created along with the service and tasks that was created with it. The end result would be the instance up and running along with the node running from the container
 # Recommendation for future work:
-I wish I knew more information in regards to aws to undertand how the roles and policies are called from terraform so I woulnt run into the problem I faced.
+I wish I knew more information and knowledge about terraform to undertand specifically which resource is being used according to aws.
 # Problems I ran into during the challenge:
 The main problems I faced with the tasks were:
 1. Compatibility problems: Installing the right versions of the tools and making sure they were compatible with the version of linux I was using. Terraform was causing problems with the version I was running but this was rectified in the end.
 2. The main problem I faced is the policy errors. I have double checked to see if a specific policy had been added to my user, however im thrown the error: `Error creating launch configuration: ValidationError: Invalid IamInstanceProfile: {aws_iam_instance_profile.ecs-ec2-role.id}`. I have went over my aws settings to see if the profile is available, its there but it cannot recognise it. It searches for it from the aws URL that handles the profile but I still havent found a resolution for it.
+- Update: I was able to fix the policy error by adding tags to the ecs.tf file. My guess is that it was not able to identify the correct configuration which was associated with the right resource.
 # Infrastructure Diagram:
 - *Note: (diagram has been added to repository)*
 # Additional comments:
