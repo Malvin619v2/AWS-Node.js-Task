@@ -13,11 +13,7 @@ resource "aws_launch_configuration" "ecs-example-launchconfig" {
   iam_instance_profile  = "{aws_iam_instance_profile.ecs-ec2-role.id}"
   security_groups       = ["${aws_security_group.ecs-securitygroup.id}"]
   user_data             = "#!/bin/bash\necho 'ECS_CLUSTER=example-cluster' > /etc/ecs/ecs.config\nstart ecs"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+  lifecycle               { create_before_destroy = true }
 
 # Manages the number of instances to be running
 resource "aws_autoscaling_group" "ecs-example-autoscaling" {
@@ -26,8 +22,10 @@ resource "aws_autoscaling_group" "ecs-example-autoscaling" {
   launch_configuration   = "${aws_launch_configuration.ecs-example-launchconfig.name}"
   min_size               = 1
   max_size               = 1
-
-  lifecycle {
-    create_before_destroy = true
-  }
+  lifecycle                { create_before_destroy = true }
+  tag {
+    key = "Name"
+    value = "ecs-ec2-container"
+    propagate_at_launch = true
+    }
 }
