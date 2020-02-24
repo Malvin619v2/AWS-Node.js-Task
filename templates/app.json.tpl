@@ -3,9 +3,9 @@
   {
     "essential": true,
     "memory": 256,
-    "name": "myapp",
+    "name": "helloworldjs-app",
     "cpu": 256,
-    "image": "${REPOSITORY_URL}:1",
+    "image": "203261016281.dkr.ecr.us-east-2.amazonaws.com/helloworldjs-app:latest",
     "workingDirectory": "/app",
     "command": ["npm", "start"],
     "portMappings": [
